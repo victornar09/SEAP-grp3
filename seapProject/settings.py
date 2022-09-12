@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'authApp',
+    'register'
 ]
 
 SIMPLE_JWT = {
@@ -73,7 +74,7 @@ REST_FRAMEWORK = {
     )
 }
 
-AUTH_USER_MODEL = 'authApp.User'
+AUTH_USER_MODEL = {'authApp.User', 'register.property'}
 
 ROOT_URLCONF = 'seapProject.urls'
 

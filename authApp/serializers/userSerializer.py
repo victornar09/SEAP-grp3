@@ -9,6 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'password', 'name', 'email', 'account']
+    
     def create(self, validated_data):
         accountData = validated_data.pop('account')
         userInstance = User.objects.create(**validated_data)
@@ -23,9 +24,9 @@ class UserSerializer(serializers.ModelSerializer):
             'name': user.name,
             'email': user.email,
             'account': {
-            'id': account.id,
-            'balance': account.balance,
-            'lastChangeDate': account.lastChangeDate,
-            'isActive': account.isActive
+                'id': account.id,
+                'balance': account.balance,
+                'lastChangeDate': account.lastChangeDate,
+                'isActive': account.isActive
             }
         }
