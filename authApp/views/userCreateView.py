@@ -5,12 +5,13 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from authApp.serializers.userSerializer import UserSerializer
 
 class UserCreateView(views.APIView):
+    
     def post(self, request, *args, **kwargs):
         serializer = UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
-        tokenData = {"username":request.data["username"],
+        tokenData = {"nit":request.data["nit"],
                     "password":request.data["password"]}
         tokenSerializer = TokenObtainPairSerializer(data=tokenData)
         tokenSerializer.is_valid(raise_exception=True)
